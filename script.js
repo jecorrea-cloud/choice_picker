@@ -62,6 +62,17 @@ function randomSelect() {
       }, 100);
     }
   }, 100);
+
+  // To stop highlight/unhilight going on forever
+  setTimeout(() => {
+    clearInterval(interval);
+
+    setTimeout(() => {
+      const randomTag = pickRandomTag();
+
+      highlightTag(randomTag);
+    }, 100);
+  }, times * 100);
 }
 
 function pickRandomTag() {
