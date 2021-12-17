@@ -44,5 +44,36 @@ function createTags(input) {
 }
 
 function randomSelect() {
-  console.log("Partially working!");
+  //   console.log("Partially working!");
+
+  //  Number of times we want each box to be highlighted
+  const times = 30;
+
+  //  This interval will fire up every 100 milisecondss
+  const interval = setInterval(() => {
+    const randomTag = pickRandomTag();
+
+    if (randomTag !== undefined) {
+      highlightTag(randomTag);
+
+      // Wait 100 miliseconds to unhighlight
+      setTimeout(() => {
+        unHighlightTag(randomTag);
+      }, 100);
+    }
+  }, 100);
+}
+
+function pickRandomTag() {
+  const tags = document.querySelectorAll(".tag");
+  //Return the index of tags
+  return tags[Math.floor(Math.random() * tags.length)];
+}
+
+function highlightTag(tag) {
+  tag.classList.add("highlight");
+}
+
+function unhighlightTag(tag) {
+  tag.classList.remove("highlight");
 }
