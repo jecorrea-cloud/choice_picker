@@ -6,6 +6,16 @@ textarea.focus();
 
 textarea.addEventListener("keyup", (event) => {
   createTags(event.target.value);
+
+  //To check if the user hit enter
+  if (event.key === "Enter") {
+    //Clear the value in the textarea
+    setTimeout(() => {
+      event.target.value = "";
+    }, 10);
+
+    randomSelect();
+  }
 });
 
 function createTags(input) {
@@ -31,4 +41,8 @@ function createTags(input) {
     tagEl.innerText = tag;
     tagsEl.appendChild(tagEl);
   });
+}
+
+function randomSelect() {
+  console.log("Partially working!");
 }
